@@ -12,16 +12,16 @@
    <title><?= $role ?> - <?= $title ?></title>
 
    <!-- Custom fonts for this template-->
-   <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+   <link href="/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
    
    <!-- Custom styles for this template-->
-   <link href="css/sb-admin-2.min.css" rel="stylesheet">
+   <link href="/css/sb-admin-2.min.css" rel="stylesheet">
 
    <!-- data tables -->
-   <link rel="stylesheet" href="css/dataTables.bootstrap4.css">
+   <link rel="stylesheet" href="/css/dataTables.bootstrap4.css">
    
-   <link rel="stylesheet" href="css/mystyle.css">
-   <style type="text/css">
+   <link rel="stylesheet" href="/css/mystyle.css">
+   <style type="/text/css">
       /* Chart.js */
       @keyframes chartjs-render-animation {
          from {
