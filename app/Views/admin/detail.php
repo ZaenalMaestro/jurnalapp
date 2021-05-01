@@ -11,7 +11,7 @@
                <h6 class="card-text text-center text-dark font-italic">Peneliti : Asep, Arya, Rafatar</h6>
                <hr>
                <div class="row">
-                  <div class="col-md-8 mr-5 ml-3">                     
+                  <div class="col-md-8 mr-5 ml-3 mb-4">                     
                      <h3 class="card-text text-dark">Abstract</h3>
                      <p class="card-text text-justify">
                         Penelitian ini bertujuan untuk mengetahui peningkatan hasil belajar IPS siswa Sekolah Dasar.
