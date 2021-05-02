@@ -42,6 +42,19 @@ $routes->group('admin', function($routes)
 {
 	$routes->get('/', 'Admin\Beranda::index');
 	$routes->get('detail', 'Admin\Beranda::show');
+	$routes->get('data', 'Admin\Data::index');
+	$routes->get('data/create', 'Admin\Data::create');
+	$routes->get('data/edit', 'Admin\Data::edit');
+});
+
+// admin
+$routes->group('user', function($routes)
+{
+	$routes->get('/', 'Admin\Beranda::index');
+	$routes->get('detail', 'Admin\Beranda::show');
+	$routes->get('data', 'Admin\Data::index');
+	$routes->get('data/create', 'Admin\Data::create');
+	$routes->get('data/edit', 'Admin\Data::edit');
 });
 
 

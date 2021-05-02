@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controllers\Admin;
+namespace App\Controllers\User;
 use App\Controllers\BaseController;
 
 class Beranda extends BaseController
@@ -10,11 +10,11 @@ class Beranda extends BaseController
 	{
 		$data = [
 			'title' 			=> 'Beranda',
-			'role' 			=> 'Admin',
+			'role' 			=> 'User',
 			'active_link' 	=> 'beranda'
 		];
 
-		return view('admin/beranda/index', $data);
+		return view('user/beranda/index', $data);
 	}
 
 	// menampilkan detail data penelitian
@@ -22,10 +22,10 @@ class Beranda extends BaseController
 	{
 		$data = [
 			'title' 			=> 'Detail',
-			'role' 			=> 'Admin',
+			'role' 			=> 'User',
 			'active_link' 	=> 'beranda'
 		];
 
-		return view('admin/beranda/show', $data);
+		return view('user/beranda/show', $data);
 	}
 }

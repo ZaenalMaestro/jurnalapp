@@ -18,14 +18,14 @@
 
    <!-- Nav Item - Enkripsi -->
    <li class="nav-item <?= ($active_link == 'beranda') ? 'active' : '' ?>">
-      <a class="nav-link" href="/">
+      <a class="nav-link" href="/admin">
          <i class="fas fa-tachometer-alt"></i>
          <span>Beranda</span></a>
    </li>
 
    <!-- Nav Item - Dekripsi -->
    <li class="nav-item <?= ($active_link == 'lihat_data') ? 'active' : '' ?>">
-      <a class="nav-link" href="/dekripsi">
+      <a class="nav-link" href="/admin/data">
          <i class="fas fa-unlock"></i>
          <span>Lihat Data</span></a>
    </li>
