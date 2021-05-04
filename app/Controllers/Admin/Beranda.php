@@ -21,7 +21,7 @@ class Beranda extends BaseController
 			'title' 					=> 'Beranda',
 			'role' 					=> 'Admin',
 			'active_link' 			=> 'beranda',
-			'daftar_penelitian'	=> $this->penelitian->findAll()
+			'daftar_penelitian'	=> $this->penelitian->getData()
 		];
 
 		return view('admin/beranda/index', $data);
@@ -31,9 +31,10 @@ class Beranda extends BaseController
 	public function show($penelitian_id)
 	{
 		// get data penelitian
-		$penelitian 	= $this->penelitian->find($penelitian_id);
+		$penelitian 	= $this->penelitian->getSingle($penelitian_id);
 		// get gambar dokumentasi penelitian
 		$dokumentasi 	= $this->gambar->dokumentasi($penelitian_id);
+		
 		$data = [
 			'title' 			=> 'Detail',
 			'role' 			=> 'Admin',

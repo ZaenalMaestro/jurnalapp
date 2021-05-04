@@ -20,7 +20,7 @@ class Data extends BaseController
 			'title' 					=> 'Lihat Data',
 			'role' 					=> 'Admin',
 			'active_link' 			=> 'lihat_data',
-			'daftar_penelitian'	=> $this->penelitian->findAll()
+			'daftar_penelitian'	=> $this->penelitian->getData()
 		];
 
 		return view('admin/penelitian/index', $data);
@@ -41,60 +41,22 @@ class Data extends BaseController
 	// tambah data penelitian baru
 	public function store()
 	{
-		// get request post
-		$data_penelitian = $this->request->getPost();
-		// get all files (jurnal, gambar, dan dokumentasi)
-		$files = $this->request->getFiles();
-
-		// ============== UPLOAD FILE JURNAL DAN INSERT DATA PENELITIAN ============== //
-		// get nama jurnal
-		$nama_jurnal = $files['jurnal']->getName();
-		// upload jurnal
-		$files['jurnal']->move(ROOTPATH . 'public/jurnal', $nama_jurnal);
-
 		// generate uniq id penelitian
 		$id_penelitian = "penelitian_" . random_string('numeric',8);
-		// insert data kedalam table penelitian
-		$record_penelitian = [
-			'id_penelitian' 		=> $id_penelitian,
-			'judul' 					=> $data_penelitian['judul'],
-			'nama_peneliti'   	=> $data_penelitian['nama'],
-			'deskripsi' 			=> $data_penelitian['deskripsi'],
-			'waktu'    				=> $data_penelitian['tanggal'],
-			'tempat_palaksanaan' => $data_penelitian['tempat'],
-			'jurnal'    			=> $nama_jurnal
-		];
-		$this->penelitian->insert($record_penelitian);
-		// ============== END UPLOAD FILE JURNAL DAN INSERT DATA PENELITIAN ============== //
-
-		// ============== UPLOAD FILE GAMBAR DAN INSERT DATA GAMBAR (TABLE DOKUMENTASI) ============== //
-		$nama_gambar = $files['gambar']->getName();
-		$files['gambar']->move(ROOTPATH . 'public/img/gambar', $nama_gambar);
-
-		// insert nama gambar kedalam database
-		$record_gambar = [
-			'id_penelitian' 	=> $id_penelitian,
-			'nama_gambar' 		=> $nama_gambar,
-			'tipe' 				=> 'gambar',
-		];
-		$this->gambar->insertGambar($record_gambar);
-		// ============== END UPLOAD FILE GAMBAR DAN INSERT DATA GAMBAR (TABLE DOKUMENTASI) ============== //
-
-		// ============== UPLOAD FILE DOKUMENTASI DAN INSERT DATA DOKUMENTASI (TABLE DOKUMENTASI) ============== //
-		foreach ($files['dokumentasi'] as $dokumentasi) {
-			$gambar_dokumentasi = $dokumentasi->getName();
-			$dokumentasi->move(ROOTPATH . 'public/img/dokumentasi', $dokumentasi->getName());
-			$record_dokumentasi [] = [
-				'id_penelitian' 	=> $id_penelitian,
-				'nama_gambar' 		=> $gambar_dokumentasi,
-				'tipe' 				=> 'dokumentasi',
-			];
-		}
-		$this->gambar->insertDokumentasi($record_dokumentasi);
-
-		// insert nama gambar kedalam database
 		
-		// ============== END UPLOAD FILE DOKUMENTASI DAN INSERT DATA DOKUMENTASI (TABLE DOKUMENTASI) ============== //
+		// get request files dan post
+		$data_penelitian 	= $this->request->getPost();
+		$files 				= $this->request->getFiles();
+
+
+		// insert data kedalam table penelitian
+		$this->penelitian->insertData($data_penelitian, $files, $id_penelitian);
+
+		// insert data ketable gambar dengan tipe "gambar" berdasarkan id_penelitian
+		// $this->gambar->insertGambar($files, $id_penelitian);
+
+		// insert data ketable gambar dengan tipe "dokumentasi" berdasarkan id_penelitian
+		// $this->gambar->insertDokumentasi($files, $id_penelitian);
 	}
 
 	// menambhakan data penelitian baru
