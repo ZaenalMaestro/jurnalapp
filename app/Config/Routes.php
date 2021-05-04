@@ -41,7 +41,7 @@ $routes->get('/registrasi', 'Login::registrasi');
 $routes->group('admin', function($routes)
 {
 	$routes->get('/', 'Admin\Beranda::index');
-	$routes->get('detail', 'Admin\Beranda::show');
+	$routes->get('detail/(:num)', 'Admin\Beranda::show/$1');
 	$routes->get('data', 'Admin\Data::index');
 	$routes->get('data/create', 'Admin\Data::create');
 	$routes->get('data/edit', 'Admin\Data::edit');
