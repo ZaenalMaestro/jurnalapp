@@ -27,16 +27,18 @@
                   </tr>
                </thead>
                <tbody>
+                  <?php foreach($daftar_penelitian as $index => $penelitian) : ?>
                   <tr>
-                     <td class="text-center">1</td>
-                     <td>Pengaruh Model Talking Stick terhadap Hasil Belajar IPS Siswa SD</td>
-                     <td>Muh. Awal Asep, Saputra Arya, Rafi Rafatar</td>
-                     <td  width="17%">21 Desember 2021</td>
+                     <td class="text-center"><?= ++$index ?></td>
+                     <td><?= $penelitian->judul ?></td>
+                     <td><?= $penelitian->nama_peneliti ?></td>
+                     <td  width="17%" class="text-center"><?= $penelitian->waktu ?></td>
                      <td width="13%" class="text-center">
                         <a href="/admin/data/edit" class="btn btn-success btn-sm">Edit</a>
                         <button class="btn btn-danger btn-sm">hapus</button>
                      </td>
                   </tr>
+                  <?php endforeach ?>
                </tbody>
             </table>
             <!-- ==== end table ==== -->

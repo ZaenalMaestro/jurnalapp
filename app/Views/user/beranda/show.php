@@ -66,7 +66,7 @@
                         </li>
                      </ul>
                      <h4 class="card-text text-center text-dark mt-3">Sampul</h4>
-                     <img src="/img/jurnal/jurnal1.jpg" class="card-img" alt="image">
+                     <img src="/img/gambar/jurnal1.jpg" class="card-img" alt="image">
                   </div>
                </div>
                <!-- ==== dokumentasi penelitian ==== -->

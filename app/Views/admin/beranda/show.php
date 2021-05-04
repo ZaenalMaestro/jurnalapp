@@ -31,7 +31,7 @@
                         </li>
                      </ul>
                      <h4 class="card-text text-center text-dark mt-3">Sampul</h4>
-                     <img src="/img/jurnal/<?= $penelitian->nama_gambar ?>" class="card-img" alt="image">
+                     <img src="/img/gambar/<?= $penelitian->nama_gambar ?>" class="card-img" alt="image">
                   </div>
                </div>
                <!-- ==== dokumentasi penelitian ==== -->

@@ -8,7 +8,7 @@
             <div class="row no-gutters">
                <!-- ==== card image ==== -->
                <div class="col-md-2">
-                  <img src="/img/jurnal/<?= $penelitian->nama_gambar ?>" class="card-img" alt="image">
+                  <img src="/img/gambar/<?= $penelitian->nama_gambar ?>" class="card-img" alt="image">
                </div>
                <!-- ==== end card image ==== -->
 
