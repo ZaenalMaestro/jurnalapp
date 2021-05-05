@@ -48,9 +48,6 @@
    </div>
 </div>
 
-
-
-
 <script src="/js/sweetalert2.js"></script>
 <script src="/js/jquery.js"></script>
 
@@ -61,5 +58,32 @@
       $('#data-penelitian').DataTable();
    });
 </script>
+
+<!-- ==== tampil pesan jika telah menambahkan data ==== -->
+<?php if(session()->getFlashData('pesan')) :?>
+   <script>
+         setTimeout(() => {
+            Swal.fire({
+               position: 'center',
+               icon: 'success',
+               title: '<?= session()->getFlashData('pesan') ?>',
+               showConfirmButton: false,
+               timer: 2500
+            })
+         }, 1000);
+   </script>
+<?php elseif(session()->getFlashData('pesan_error')) :?>
+   <script>
+         setTimeout(() => {
+            Swal.fire({
+               position: 'center',
+               icon: 'error',
+               title: '<?= session()->getFlashData('pesan_error') ?>',
+               showConfirmButton: false,
+               timer: 2500
+            })
+         }, 1000);
+   </script>
+<?php endif ?>
 
 <?= $this->endSection() ?>

@@ -21,7 +21,8 @@ class PenelitianModel extends Model
 
    public function __construct()
    {
-      $this->db            = \Config\Database::connect();
+      parent::__construct();
+      $this->db      = \Config\Database::connect();
       $this->builder = $this->db->table('penelitian');
    }
 
@@ -35,7 +36,7 @@ class PenelitianModel extends Model
    // menampilkan view daftar penelitian dari table penelitian dan gambar
    public function getSingle($id_penelitian)
    {
-      return $this->db->query("SELECT * FROM daftar_penelitian WHERE id_penelitian = $id_penelitian")
+      return $this->db->query("SELECT * FROM daftar_penelitian WHERE id_penelitian = '$id_penelitian'")
                         ->getResultObject()[0];
    }
 

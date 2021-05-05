@@ -7,7 +7,7 @@
       <div class="card">
          <div class="card-body mx-3">
             <!-- ==== form ==== -->
-            <form action="" method="post" enctype="multipart/form-data">
+            <form action="/admin/data/insert" method="post" enctype="multipart/form-data">
                <!-- ==== judul penelitian ==== -->
                <div class="form-group row mb-4">
                   <label for="inputJudul" class="col-sm-3 col-form-label">Judul Penelitian</label>
@@ -34,6 +34,14 @@
                   </div>
                </div>
 
+               <!-- ==== tempat Penelitian ==== -->
+               <div class="form-group row mb-4">
+                  <label for="inputTempat" class="col-sm-3 col-form-label">Tempat Penelitian</label>
+                  <div class="col-sm-9">
+                     <input type="text" class="form-control" name="tempat" id="inputTempat" placeholder="Input tempat penelitian...">
+                  </div>
+               </div>
+
                <!-- ==== deskripsi penelitian ==== -->
                <div class="form-group row mb-4">
                   <label for="inputDeskripsi" class="col-sm-3 col-form-label">Deskripsi</label>
@@ -51,7 +59,35 @@
                         <div class="custom-file">
                            <input type="file" class="custom-file-input" name="jurnal" id="inputJurnal"
                               aria-describedby="inputGroupFileAddon01">
-                           <label class="custom-file-label" for="inputJurnal">Pilih jurnal</label>
+                           <label class="custom-file-label jurnal" for="inputJurnal">Pilih jurnal</label>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+
+               <!-- ==== file gambar ==== -->
+               <div class="form-group row mb-4">
+                  <label for="inputGambar" class="col-sm-3 col-form-label">Gambar Penelitian</label>
+                  <div class="col-sm-9">
+                     <div class="input-group mb-3">
+                        <div class="custom-file">
+                           <input type="file" class="custom-file-input" name="gambar" id="inputGambar"
+                              aria-describedby="inputGroupFileAddon01">
+                           <label class="custom-file-label gambar" for="inputJurnal">Pilih gambar</label>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+
+               <!-- ==== file dokumentasi ==== -->
+               <div class="form-group row mb-4">
+                  <label for="inputDokumentasi" class="col-sm-3 col-form-label">Dokumentasi Penelitian</label>
+                  <div class="col-sm-9">
+                     <div class="input-group mb-3">
+                        <div class="custom-file">
+                           <input type="file" class="custom-file-input" name="dokumentasi[]" multiple id="inputDokumentasi"
+                              aria-describedby="inputGroupFileAddon01">
+                           <label class="custom-file-label dokumentasi" for="inputJurnal">Pilih gambar dokumentasi</label>
                         </div>
                      </div>
                   </div>
@@ -60,7 +96,7 @@
                <!-- ==== tombol submit==== -->
                <div class="row">
                   <div class="col text-right">
-                     <button class="btn btn-success">Ubah Data Penelitian</button>
+                     <button class="btn btn-primary" type="submit">Simpan Data Penelitian</button>
                   </div>
                </div>
             </form>
@@ -85,8 +121,22 @@
    });
 
    $('input[type="file"]').change(function (e) {
+      const form = e.target.getAttribute('id');
       var fileName = e.target.files[0].name;
-      $('.custom-file-label').html(fileName);
+      
+      if(form === 'inputJurnal') {
+         $('.jurnal').html(fileName);
+      }else if(form === 'inputGambar') {
+         $('.gambar').html(fileName);
+      }else if(form === 'inputDokumentasi') {
+         let multipleFile = ''
+         for (let i = 0; i < e.target.files.length; i++) {
+            if(i > 0) multipleFile += ' - '            
+            multipleFile += e.target.files[i].name;
+         }
+         $('.dokumentasi').html(multipleFile);
+      }
+      
    });
 </script>
 

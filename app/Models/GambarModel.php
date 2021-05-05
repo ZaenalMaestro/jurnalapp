@@ -17,7 +17,7 @@ class GambarModel extends Model
    
    public function __construct()
    {
-      $db      = \Config\Database::connect();
+      $db            = \Config\Database::connect();
       $this->builder = $db->table($this->table);
    }
 
@@ -31,7 +31,7 @@ class GambarModel extends Model
    // insert gambar dengan tipe gambar
    public function insertGambar($files, $id_penelitian)
    {
-      $nama_gambar = $files['gambar']->getName();
+      $nama_gambar = $files['gambar']->getRandomName();
 		$files['gambar']->move(ROOTPATH . 'public/img/gambar', $nama_gambar);
 
 		// insert nama gambar kedalam database
@@ -40,15 +40,15 @@ class GambarModel extends Model
 			'nama_gambar' 		=> $nama_gambar,
 			'tipe' 				=> 'gambar',
 		];      
-      $this->builder->insert($gambar); 
+      $this->builder->insert($record_gambar); 
    }
 
    // insert multiple nama dokumentasi dengan tipe dokumentasi
    public function insertDokumentasi($files, $id_penelitian)
    {      
       foreach ($files['dokumentasi'] as $dokumentasi) {
-			$gambar_dokumentasi = $dokumentasi->getName();
-			$dokumentasi->move(ROOTPATH . 'public/img/dokumentasi', $dokumentasi->getName());
+			$gambar_dokumentasi = $dokumentasi->getRandomName();
+			$dokumentasi->move(ROOTPATH . 'public/img/dokumentasi', $gambar_dokumentasi);
 			$record_dokumentasi [] = [
 				'id_penelitian' 	=> $id_penelitian,
 				'nama_gambar' 		=> $gambar_dokumentasi,
