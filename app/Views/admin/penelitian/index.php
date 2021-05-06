@@ -33,9 +33,13 @@
                      <td><?= $penelitian->judul ?></td>
                      <td><?= $penelitian->nama_peneliti ?></td>
                      <td  width="17%" class="text-center"><?= $penelitian->waktu ?></td>
-                     <td width="13%" class="text-center">
-                        <a href="/admin/data/edit" class="btn btn-success btn-sm">Edit</a>
-                        <button class="btn btn-danger btn-sm">hapus</button>
+                     <td width="26%" class="text-center">
+                        <a href="/admin/data/edit/<?= $penelitian->id_penelitian ?>" class="btn btn-success btn-sm">Edit</a>
+                        <form action="/admin/data/<?= $penelitian->id_penelitian ?>" method="post" class="d-inline">
+                           <?= csrf_field() ?>
+                           <input type="hidden" name="_method" VALUE="DELETE">
+                           <button class="btn btn-danger btn-sm" type="submit">hapus</button>
+                        </form>
                      </td>
                   </tr>
                   <?php endforeach ?>

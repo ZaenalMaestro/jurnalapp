@@ -6,7 +6,7 @@ use CodeIgniter\Model;
 
 class PenelitianModel extends Model
 {
-   protected $table      = 'daftar_penelitian';
+   protected $table      = 'penelitian';
    protected $primaryKey = 'id_penelitian';
    protected $returnType = 'object';
    protected $allowedFields = [
@@ -23,7 +23,7 @@ class PenelitianModel extends Model
    {
       parent::__construct();
       $this->db      = \Config\Database::connect();
-      $this->builder = $this->db->table('penelitian');
+      $this->builder = $this->db->table($this->table);
    }
 
    // menampilkan view daftar penelitian dari table penelitian dan gambar
@@ -41,6 +41,7 @@ class PenelitianModel extends Model
    }
 
 
+   // menambahkan data ketable penelitian
    public function insertData($data_penelitian, $files, $id_penelitian)
    {
       // get nama jurnal
@@ -61,5 +62,28 @@ class PenelitianModel extends Model
 
       // insert data kedalam table penelitian
 		$this->insert($record_penelitian);
+   }
+
+   // update penelitian
+   public function updateData($data, $jurnal)
+   {      
+      $data_penelitian = [
+         'nama_peneliti'      => $data['nama'],
+			'judul'              => $data['judul'],
+			'waktu'              => $data['tanggal'],
+			'tempat_palaksanaan' => $data['tempat'],
+			'deskripsi'          => $data['deskripsi'],
+	   ];
+      
+      // upload jurnal baru
+      $nama_jurnal = $jurnal->getName();
+      if($nama_jurnal) {
+         $data_penelitian['jurnal'] = $nama_jurnal;
+         $jurnal->move(ROOTPATH . 'public/jurnal', $nama_jurnal);
+      }
+
+      // insert data
+      $id = $data['id_penelitian'];
+	   $this->update($id, $data_penelitian);
    }
 }

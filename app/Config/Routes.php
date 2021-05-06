@@ -45,7 +45,13 @@ $routes->group('admin', function($routes)
 	$routes->get('data', 'Admin\Data::index');
 	$routes->get('data/create', 'Admin\Data::create');
 	$routes->post('data/insert', 'Admin\Data::store');
-	$routes->get('data/edit', 'Admin\Data::edit');
+	$routes->get('data/edit/(:any)', 'Admin\Data::edit/$1');
+	$routes->put('data/penelitian', 'Admin\Data::updatePenelitian');
+	$routes->put('data/gambar', 'Admin\Data::updateGambar');
+	$routes->post('data/dokumentasi', 'Admin\Data::insertDokumentasi');
+	$routes->put('data/dokumentasi', 'Admin\Data::updateDokumentasi');
+	$routes->delete('data/dokumentasi/(:num)', 'Admin\Data::deleteDokumentasi/$1');
+	$routes->delete('data/(:any)', 'Admin\Data::delete/$1');
 });
 
 // admin
