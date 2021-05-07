@@ -34,9 +34,19 @@
             <!-- Nested Row within Card Body -->
             <div class="row">
               <div class="col-lg-6 d-none d-lg-block bg-login-image"></div>
-              <div class="col-lg-6">
+              <div class="col-lg-6">              
                 <div class="p-5">
                   <div class="text-center">
+                    <!-- ==== pesan registrasi -->
+                    <?php if(session()->getFlashData('pesan')) : ?>
+                      <div class="alert alert-success alert-dismissible fade show" role="alert">
+                      <?= session()->getFlashData('pesan') ?>
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                    <?php endif ?>
+                     <!-- ==== end pesan registrasi -->
                     <h1 class="h4 text-gray-900 mb-4">Login</h1>
                   </div>
                   <form class="user">

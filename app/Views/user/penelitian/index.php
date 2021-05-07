@@ -27,16 +27,22 @@
                   </tr>
                </thead>
                <tbody>
+                  <?php foreach($daftar_penelitian as $index => $penelitian) : ?>
                   <tr>
-                     <td class="text-center">1</td>
-                     <td>Pengaruh Model Talking Stick terhadap Hasil Belajar IPS Siswa SD</td>
-                     <td>Muh. Awal Asep, Saputra Arya, Rafi Rafatar</td>
-                     <td  width="17%">21 Desember 2021</td>
+                     <td class="text-center"><?= ++$index ?></td>
+                     <td><?= $penelitian->judul ?></td>
+                     <td width="20%"><?= $penelitian->nama_peneliti ?></td>
+                     <td  width="15%" class="text-center"><?= $penelitian->waktu ?></td>
                      <td width="13%" class="text-center">
-                        <a href="/user/data/edit" class="btn btn-success btn-sm">Edit</a>
-                        <button class="btn btn-danger btn-sm">hapus</button>
+                        <a href="/user/data/edit/<?= $penelitian->id_penelitian ?>" class="btn btn-success btn-sm">Edit</a>
+                        <form action="/user/data/<?= $penelitian->id_penelitian ?>" method="post" class="d-inline">
+                           <?= csrf_field() ?>
+                           <input type="hidden" name="_method" VALUE="DELETE">
+                           <button class="btn btn-danger btn-sm" type="submit">hapus</button>
+                        </form>
                      </td>
                   </tr>
+                  <?php endforeach ?>
                </tbody>
             </table>
             <!-- ==== end table ==== -->
@@ -45,9 +51,6 @@
       <!-- ==== end card === -->
    </div>
 </div>
-
-
-
 
 <script src="/js/sweetalert2.js"></script>
 <script src="/js/jquery.js"></script>
@@ -59,5 +62,32 @@
       $('#data-penelitian').DataTable();
    });
 </script>
+
+<!-- ==== tampil pesan jika telah menambahkan data ==== -->
+<?php if(session()->getFlashData('pesan')) :?>
+   <script>
+         setTimeout(() => {
+            Swal.fire({
+               position: 'center',
+               icon: 'success',
+               title: '<?= session()->getFlashData('pesan') ?>',
+               showConfirmButton: false,
+               timer: 2500
+            })
+         }, 1000);
+   </script>
+<?php elseif(session()->getFlashData('pesan_error')) :?>
+   <script>
+         setTimeout(() => {
+            Swal.fire({
+               position: 'center',
+               icon: 'error',
+               title: '<?= session()->getFlashData('pesan_error') ?>',
+               showConfirmButton: false,
+               timer: 2500
+            })
+         }, 1000);
+   </script>
+<?php endif ?>
 
 <?= $this->endSection() ?>

@@ -18,21 +18,30 @@
 
    <!-- Nav Item - Enkripsi -->
    <li class="nav-item <?= ($active_link == 'beranda') ? 'active' : '' ?>">
-      <a class="nav-link" href="/admin">
+      <a class="nav-link" href="/<?= strtolower($role) ?>">
          <i class="fas fa-tachometer-alt"></i>
          <span>Beranda</span></a>
    </li>
 
    <!-- Nav Item - Dekripsi -->
    <li class="nav-item <?= ($active_link == 'lihat_data') ? 'active' : '' ?>">
-      <a class="nav-link" href="/admin/data">
+      <a class="nav-link" href="/<?= strtolower($role) ?>/data">
          <i class="fas fa-unlock"></i>
          <span>Lihat Data</span></a>
    </li>
 
+   <!-- Nav Item - akun user -->
+   <?php if ($role == 'Admin') : ?>
+      <li class="nav-item <?= ($active_link == 'akun_user') ? 'active' : '' ?>">
+         <a class="nav-link" href="/<?= strtolower($role) ?>/akun">
+            <i class="fas fa-unlock"></i>
+            <span>Akun User</span></a>
+      </li>
+   <?php endif ?>
+
    <!-- Nav Item - Pengujian -->
    <li class="nav-item">
-      <a class="nav-link" href="/pengujian">
+      <a class="nav-link" href="#">
          <i class="fas fa-cog"></i>
          <span>Keluar</span></a>
    </li>

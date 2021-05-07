@@ -39,19 +39,35 @@
                   <div class="text-center">
                     <h1 class="h4 text-gray-900 mb-4">Registrasi</h1>
                   </div>
-                  <form class="user">
+                  <form class="user" action="/registrasi" method="POST">
+                    <?= csrf_field() ?>
                     <div class="form-group">
-                      <input type="email" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Nomor induk">
+                      <input type="text" name="nama" class="nama form-control form-control-user <?= ($validation->hasError('nama') ? 'is-invalid' : '') ?>" placeholder="Nama" value="<?= old('nama') ?>">
+                      <div class="invalid-feedback">
+                        <?= $validation->getError('nama') ?>
+                      </div>
                     </div>
                     <div class="form-group">
-                      <input type="password" class="form-control form-control-user" id="exampleInputPassword" placeholder="Password">
+                      <input type="text" name="nomor_induk" class="nomor_induk form-control form-control-user <?= ($validation->hasError('nomor_induk') ? 'is-invalid' : '') ?>" placeholder="Nomor induk" value="<?= old('nomor_induk') ?>">
+                      <div class="invalid-feedback">
+                        <?= $validation->getError('nomor_induk') ?>
+                      </div>
                     </div>
                     <div class="form-group">
-                      <input type="password" class="form-control form-control-user" id="exampleInputPassword" placeholder="Konfirmasi Password">
+                      <input type="password" name="password" class="form-control form-control-user password <?= ($validation->hasError('password') ? 'is-invalid' : '') ?>" placeholder="Password" value="<?= old('password') ?>">
+                      <div class="invalid-feedback">
+                        <?= $validation->getError('password') ?>
+                      </div>
                     </div>
-                    <a href="index.html" class="btn btn-success btn-user btn-block">
+                    <div class="form-group">
+                      <input type="password" name="konfirmasi_password" class="form-control form-control-user konfirmasi-password <?= ($validation->hasError('konfirmasi_password') ? 'is-invalid' : '') ?>" placeholder="Konfirmasi Password" value="<?= old('konfirmasi_password') ?>">
+                      <div class="invalid-feedback pesan-invalid">
+                      <?= $validation->getError('konfirmasi_password') ?>
+                       </div>
+                    </div>
+                    <button type="submit" class="btn btn-success btn-user btn-block btn-registrasi">
                       Registrasi
-                    </a>
+                    </button>
                   </form>
                   <hr>
                   <div class="text-center">
@@ -78,6 +94,9 @@
 
   <!-- Custom scripts for all pages-->
   <script src="/js/sb-admin-2.min.js"></script>
+
+  <!-- validasi kecocokan password dengan konfirmasi password -->
+  <script src="/js/validasi-password.js"></script>
 
 </body>
 

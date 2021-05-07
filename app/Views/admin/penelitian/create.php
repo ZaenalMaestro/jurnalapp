@@ -60,7 +60,7 @@
                   <label for="inputDeskripsi" class="col-sm-3 col-form-label text-dark">Deskripsi</label>
                   <div class="col-sm-9">
                      <textarea class="form-control <?= ($validation->hasError('deskripsi') ? 'is-invalid' : '') ?>" name="deskripsi" id="inputDeskripsi"
-                        placeholder="Input deskripsi penelitian..." value="<?= old('deskripsi') ?>"rows="6"></textarea>
+                        placeholder="Input deskripsi penelitian..." rows="6"><?= old('deskripsi') ?></textarea>
                      <div class="invalid-feedback">
                         <?= $validation->getError('deskripsi') ?>
                      </div>
@@ -74,8 +74,8 @@
                      <div class="input-group">
                         <div class="custom-file">
                            <input type="file" class="custom-file-input <?= ($validation->hasError('jurnal') ? 'is-invalid' : '') ?>" name="jurnal" id="inputJurnal"
-                              aria-describedby="inputGroupFileAddon01">
-                           <label class="custom-file-label jurnal" for="inputJurnal" value="<?= old('jurnal') ?>">Pilih jurnal</label>
+                              aria-describedby="inputGroupFileAddon01" value="<?= old('jurnal') ?>">
+                           <label class="custom-file-label jurnal" for="inputJurnal">Pilih jurnal</label>
                         </div>
                      </div>
                      <small class="text-danger mt-1 text-small <?= ($validation->hasError('jurnal') ? 'd-block' : 'd-none') ?>">
@@ -91,7 +91,7 @@
                      <div class="input-group mb-3">
                         <div class="custom-file">
                            <input type="file" class="custom-file-input <?= ($validation->hasError('gambar') ? 'is-invalid' : '') ?>" name="gambar" id="inputGambar"
-                              aria-describedby="inputGroupFileAddon01">
+                              aria-describedby="inputGroupFileAddon01" value="<?= old('gambar') ?>">
                            <label class="custom-file-label gambar" for="inputJurnal">Pilih gambar</label>
                         </div>
                      </div>
@@ -108,7 +108,7 @@
                      <div class="input-group mb-3">
                         <div class="custom-file">
                            <input type="file" class="custom-file-input <?= ($validation->hasError('dokumentasi') ? 'is-invalid' : '') ?>" name="dokumentasi[]" multiple id="inputDokumentasi"
-                              aria-describedby="inputGroupFileAddon01">
+                              aria-describedby="inputGroupFileAddon01" value="<?= old('dokumentasi') ?>">
                            <label class="custom-file-label dokumentasi" for="inputJurnal">Pilih gambar dokumentasi</label>
                         </div>
                      </div>

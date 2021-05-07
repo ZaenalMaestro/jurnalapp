@@ -68,10 +68,7 @@
                <div class="form-group row mb-4">
                   <label for="inputDeskripsi" class="col-sm-3 col-form-label text-dark">Deskripsi</label>
                   <div class="col-sm-9">
-                     <textarea class="form-control <?= ($validation->hasError('deskripsi') ? 'is-invalid' : '') ?>"
-                        name="deskripsi" id="inputDeskripsi" placeholder="Input deskripsi penelitian..." rows="6">
-                        <?= $penelitian->deskripsi ?>
-                     </textarea>
+                     <textarea class="form-control <?= ($validation->hasError('deskripsi') ? 'is-invalid' : '') ?>" name="deskripsi" id="inputDeskripsi" placeholder="Input deskripsi penelitian..." rows="6"><?= $penelitian->deskripsi ?></textarea>
                      <div class="invalid-feedback">
                         <?= $validation->getError('deskripsi') ?>
                      </div>
