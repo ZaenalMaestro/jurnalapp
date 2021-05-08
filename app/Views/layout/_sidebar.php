@@ -41,7 +41,7 @@
 
    <!-- Nav Item - Pengujian -->
    <li class="nav-item">
-      <a class="nav-link" href="#">
+      <a class="nav-link" href="/logout">
          <i class="fas fa-cog"></i>
          <span>Keluar</span></a>
    </li>

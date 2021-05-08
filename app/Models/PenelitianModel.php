@@ -60,6 +60,10 @@ class PenelitianModel extends Model
 			'jurnal'    			=> $nama_jurnal
 		];
 
+      if(session('role') == 'user'){
+         $record_penelitian['id_user'] = session('id_user');
+      }
+
       // insert data kedalam table penelitian
 		$this->insert($record_penelitian);
    }
@@ -73,7 +77,7 @@ class PenelitianModel extends Model
 			'waktu'              => $data['tanggal'],
 			'tempat_palaksanaan' => $data['tempat'],
 			'deskripsi'          => $data['deskripsi'],
-	   ];
+	   ];      
       
       // upload jurnal baru
       $nama_jurnal = $jurnal->getName();

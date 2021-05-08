@@ -7,7 +7,7 @@
       <div class="card">
          <div class="card-body mx-3">
             <!-- ==== form ==== -->
-            <form action="/admin/data/penelitian" method="post" enctype="multipart/form-data" class="mb-3">
+            <form action="/user/data/penelitian" method="post" enctype="multipart/form-data" class="mb-3">
                <?= csrf_field() ?>
                <input type="hidden" name="_method" value="PUT">
                <input type="hidden" name="id_penelitian" value="<?= $penelitian->id_penelitian ?>">

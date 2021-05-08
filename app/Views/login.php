@@ -49,16 +49,21 @@
                      <!-- ==== end pesan registrasi -->
                     <h1 class="h4 text-gray-900 mb-4">Login</h1>
                   </div>
-                  <form class="user">
+                  <form class="user" action="/login" method="POST">
+                    <?= csrf_field() ?>
                     <div class="form-group">
-                      <input type="email" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Enter Email Address...">
+                      <input type="text" class="form-control form-control-user <?= ($validation->hasError('nomor_induk') ? 'is-invalid' : '') ?>" placeholder="Nomor induk" value="<?= old('nomor_induk') ?>" name="nomor_induk" placeholder="Nomor Induk">
+                      <div class="invalid-feedback">
+                        <?= $validation->getError('nomor_induk') ?>
+                      </div>
                     </div>
                     <div class="form-group">
-                      <input type="password" class="form-control form-control-user" id="exampleInputPassword" placeholder="Password">
+                      <input type="password" class="form-control form-control-user <?= ($validation->hasError('password') ? 'is-invalid' : '') ?> password" name="password" placeholder="Password" value="<?= old('password') ?>">
+                      <div class="invalid-feedback">
+                        <?= $validation->getError('password') ?>
+                      </div>
                     </div>
-                    <a href="index.html" class="btn btn-primary btn-user btn-block">
-                      Login
-                    </a>
+                    <button type="submit" class="btn btn-primary btn-user btn-block">Login</button>
                   </form>
                   <hr>
                   <div class="text-center">
@@ -86,6 +91,12 @@
   <!-- Custom scripts for all pages-->
   <script src="/js/sb-admin-2.min.js"></script>
 
+  <script>
+    const password = document.querySelector('.password')
+    password.addEventListener('keyup', function () {
+      password.classList.remove('is-invalid')
+    })
+  </script>
 </body>
 
 </html>

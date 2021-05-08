@@ -1,7 +1,7 @@
 <footer class="sticky-footer bg-white">
    <div class="container my-auto">
       <div class="copyright text-center my-auto">
-         <span>Copyright © Pixel Studio - 2021</span>
+         <span>Copyright © <b>Pixel Studio</b> - <?= date("Y"); ?></span>
       </div>
    </div>
 </footer>

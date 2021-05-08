@@ -7,7 +7,7 @@
       <div class="card">
          <div class="card-body mx-3">
             <!-- ==== form ==== -->
-            <form action="/admin/data/insert" method="post" enctype="multipart/form-data">
+            <form action="/user/data/insert" method="post" enctype="multipart/form-data">
                <?= csrf_field() ?>
                <!-- ==== judul penelitian ==== -->
                <div class="form-group row mb-4">

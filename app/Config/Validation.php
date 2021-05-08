@@ -140,6 +140,25 @@ class Validation
 		]
 	];
 
+	public $login = [
+		'nomor_induk' => [
+			'rules'  => 'required|max_length[20]|min_length[11]',
+			'errors' => [
+				'required'	 => 'Nomor induk tidak boleh kosong.',
+				'max_length' => 'Nomor induk maksimal 20 karakter',
+				'min_length' => 'Nomor induk minimal 11 karakter',
+			]
+		],
+		'password' => [
+			'rules'  => 'required|max_length[50]|min_length[8]',
+			'errors' => [
+				'required'	 => 'Password tidak boleh kosong.',
+				'max_length' => 'Password maksimal 50 karakter',
+				'min_length' => 'Password maksimal 8 karakter',
+			]
+		]
+	];
+
 	public $validasi_gambar = [
 		'gambar' => [
 			'rules'  => 'is_image[gambar]|max_size[gambar,2048]|ext_in[gambar,png,jpg,gif,jpeg]',

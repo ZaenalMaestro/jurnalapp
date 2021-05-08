@@ -34,12 +34,14 @@ $routes->setAutoRoute(false);
 // route since we don't have to scan directories.
 
 // login
-$routes->get('/', 'Login::index');
-$routes->get('/registrasi', 'Login::registrasi');
-$routes->post('/registrasi', 'Login::signUp');
+$routes->get('/', 'Login::index', ['filter' => 'isLogin']);
+$routes->get('/registrasi', 'Login::registrasi', ['filter' => 'isLogin']);
+$routes->post('/registrasi', 'Login::signUp', ['filter' => 'isLogin']);
+$routes->post('/login', 'Login::signIn', ['filter' => 'isLogin']);
+$routes->get('/logout', 'Login::logOut');
 
 // admin
-$routes->group('admin', function($routes)
+$routes->group('admin', ['filter' => 'isAdmin'], function($routes)
 {
 	// beranda
 	$routes->get('/', 'Admin\Beranda::index');
@@ -61,7 +63,7 @@ $routes->group('admin', function($routes)
 });
 
 // admin
-$routes->group('user', function($routes)
+$routes->group('user', ['filter' => 'isUser'], function($routes)
 {
 	// beranda
 	$routes->get('/', 'User\Beranda::index');

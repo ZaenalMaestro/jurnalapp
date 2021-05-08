@@ -21,7 +21,7 @@ class Data extends BaseController
 			'title' 					=> 'Lihat Data',
 			'role' 					=> 'User',
 			'active_link' 			=> 'lihat_data',
-			'daftar_penelitian'	=> $this->penelitian->where('id_user', 2)->findAll()
+			'daftar_penelitian'	=> $this->penelitian->where('id_user', session('id_user'))->findAll()
 		];
 
 		return view('user/penelitian/index', $data);
@@ -55,9 +55,9 @@ class Data extends BaseController
 			return redirect()->back()->withInput();
 		}
 
+		$this->penelitian->insertData($data_penelitian, $files, $id_penelitian);
 		try {
 			// insert data kedalam table penelitian
-			$this->penelitian->insertData($data_penelitian, $files, $id_penelitian);
 
 			// insert data ketable gambar dengan tipe "gambar" berdasarkan id_penelitian
 			$this->gambar->insertGambar($files, $id_penelitian);
@@ -66,7 +66,7 @@ class Data extends BaseController
 			$this->gambar->insertDokumentasi($files, $id_penelitian);
 
 			session()->setFlashData('pesan', 'Penelitian berhasil ditambahkan !');
-			return redirect()->to('/admin/data');
+			return redirect()->to('/user/data');
 		} catch (\Exception $e) {
 			session()->setFlashData('pesan_error', 'Penelitian gagal ditambahkan !');
 			return redirect()->to('/user/data');
