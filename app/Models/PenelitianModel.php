@@ -11,6 +11,7 @@ class PenelitianModel extends Model
    protected $returnType = 'object';
    protected $allowedFields = [
       'id_penelitian', 
+      'id_user', 
       'judul', 
       'nama_peneliti', 
       'deskripsi', 

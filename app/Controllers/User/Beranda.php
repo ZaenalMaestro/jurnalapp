@@ -12,6 +12,7 @@ class Beranda extends BaseController
 		helper('text');
 		$this->penelitian = new Penelitian();
 		$this->gambar = new Gambar();
+		$this->daftarPenelitian = new \App\Models\DaftarPenelitianModel();
 	}
 
 	// menampilkan halaman dashborad - data penelitian
@@ -21,7 +22,8 @@ class Beranda extends BaseController
 			'title' 					=> 'Beranda',
 			'role' 					=> 'User',
 			'active_link' 			=> 'beranda',
-			'daftar_penelitian'	=> $this->penelitian->getData()
+			'daftar_penelitian'	=> $this->daftarPenelitian->paginate(3, 'daftar_penelitian'),
+			'pager'					=> $this->daftarPenelitian->pager
 		];
 
 		return view('user/beranda/index', $data);

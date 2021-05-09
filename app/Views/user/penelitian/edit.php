@@ -68,10 +68,7 @@
                <div class="form-group row mb-4">
                   <label for="inputDeskripsi" class="col-sm-3 col-form-label text-dark">Deskripsi</label>
                   <div class="col-sm-9">
-                     <textarea class="form-control <?= ($validation->hasError('deskripsi') ? 'is-invalid' : '') ?>"
-                        name="deskripsi" id="inputDeskripsi" placeholder="Input deskripsi penelitian..." rows="6">
-                        <?= $penelitian->deskripsi ?>
-                     </textarea>
+                     <textarea class="form-control <?= ($validation->hasError('deskripsi') ? 'is-invalid' : '') ?>" name="deskripsi" id="inputDeskripsi" placeholder="Input deskripsi penelitian..." rows="6"><?= $penelitian->deskripsi ?></textarea>
                      <div class="invalid-feedback">
                         <?= $validation->getError('deskripsi') ?>
                      </div>
@@ -110,7 +107,7 @@
             <!-- ==== end form ==== -->
 
             <!-- ==== form gambar ==== -->
-            <form action="/admin/data/gambar" method="post" enctype="multipart/form-data" class="my-5">
+            <form action="/user/data/gambar" method="post" enctype="multipart/form-data" class="my-5">
                   <?= csrf_field() ?>
                   <input type="hidden" name="_method" value="PUT">
                   <input type="hidden" name="old_gambar" value="<?= $penelitian->nama_gambar ?>">
@@ -148,7 +145,7 @@
             <div class="form-group row my-4">
                <label for="inputDokumentasi" class="col-sm-3 col-form-label text-dark">Dokumentasi Penelitian</label>
                   <div class="col-sm-9">
-                     <form action="/admin/data/dokumentasi" method="post" enctype="multipart/form-data">
+                     <form action="/user/data/dokumentasi" method="post" enctype="multipart/form-data">
                         <?= csrf_field() ?>
                         <input type="hidden" name="id_penelitian" value="<?= $penelitian->id_penelitian ?>">
                         <div class="input-group">
@@ -172,7 +169,7 @@
                      <div class="row">
                         <?php foreach($dokumentasi as $doc) :?>
                            <div class="col-md-3 mb-4">
-                              <form action="/admin/data/dokumentasi/<?= $doc->id_gambar ?>" method="post">
+                              <form action="/user/data/dokumentasi/<?= $doc->id_gambar ?>" method="post">
                                  <?= csrf_field() ?>
                                  <input type="hidden" name="_method" value="DELETE">
                                  <button type="submit" class="btn btn-sm btn-danger btn-icon-split">

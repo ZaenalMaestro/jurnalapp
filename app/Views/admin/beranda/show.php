@@ -10,8 +10,9 @@
                <h6 class="card-text text-center text-dark font-italic">Peneliti : <?= $penelitian->nama_peneliti ?></h6>
                <hr>
                <div class="row">
-                  <div class="col-md-8 mr-5 ml-3 mb-4">                     
-                     <h3 class="card-text text-dark">Deskripsi</h3>
+                  <div class="col-sm-12 col-md-8 mr-5 ml-3 mb-4">        
+                     <img src="/img/gambar/<?= $penelitian->nama_gambar ?>" class="card-img" alt="image">             
+                     <h3 class="card-text text-dark my-3">Deskripsi</h3>
                      <p class="card-text text-justify"><?= $penelitian->deskripsi ?></p>
                   </div>
                   <div class="col-md-3 align-item-center">
@@ -30,8 +31,6 @@
                            <?= $penelitian->tempat_palaksanaan ?>
                         </li>
                      </ul>
-                     <h4 class="card-text text-center text-dark mt-3">Sampul</h4>
-                     <img src="/img/gambar/<?= $penelitian->nama_gambar ?>" class="card-img" alt="image">
                   </div>
                </div>
                <!-- ==== dokumentasi penelitian ==== -->

@@ -3,9 +3,11 @@
    <!-- Sidebar - Brand -->
    <a class="sidebar-brand d-flex align-items-center justify-content-center my-4" href="index.html">
       <div class="sidebar-brand-icon mt-5">
+         <h4>Welcome</h4>
+         <?php if(session('role') == 'user') : ?>
+            <div class="sidebar-brand-text mx-1"><?= session('nama') ?></div>
+         <?php endif ?>
       </div>
-      <img src="/img/shield.png" alt="shield.png" width="40">
-      <!-- <div class="sidebar-brand-text mx-1">Tugas Akhir</div> -->
    </a>
 
    <!-- Divider -->
@@ -26,7 +28,7 @@
    <!-- Nav Item - Dekripsi -->
    <li class="nav-item <?= ($active_link == 'lihat_data') ? 'active' : '' ?>">
       <a class="nav-link" href="/<?= strtolower($role) ?>/data">
-         <i class="fas fa-unlock"></i>
+         <i class="fas fa-table"></i>
          <span>Lihat Data</span></a>
    </li>
 
@@ -34,7 +36,7 @@
    <?php if ($role == 'Admin') : ?>
       <li class="nav-item <?= ($active_link == 'akun_user') ? 'active' : '' ?>">
          <a class="nav-link" href="/<?= strtolower($role) ?>/akun">
-            <i class="fas fa-unlock"></i>
+            <i class="fas fa-user"></i>
             <span>Akun User</span></a>
       </li>
    <?php endif ?>
@@ -42,7 +44,7 @@
    <!-- Nav Item - Pengujian -->
    <li class="nav-item">
       <a class="nav-link" href="/logout">
-         <i class="fas fa-cog"></i>
+         <i class="fas fa-sign-out-alt"></i>
          <span>Keluar</span></a>
    </li>
 

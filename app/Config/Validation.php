@@ -87,21 +87,19 @@ class Validation
 			]
 		],
 		'gambar' => [
-			'rules'  => 'uploaded[gambar]|is_image[gambar]|max_size[gambar,2048]|ext_in[gambar,png,jpg,gif,jpeg]',
+			'rules'  => 'uploaded[gambar]|is_image[gambar]|max_size[gambar,2048]',
 			'errors' => [
 				'uploaded'  => '{field} tidak boleh kosong.',
 				'is_image'  => 'File yang diupload bukan gambar.',
 				'max_size'  => '{field} maksimal 2048 Kb.',
-				'ext_in'		=> 'Format file tidak didukung',
 			]
 		],
 		'dokumentasi' => [
-			'rules'  => 'uploaded[dokumentasi]|is_image[dokumentasi]|max_size[dokumentasi,2048]|ext_in[dokumentasi,png,jpg,gif,jpeg]',
+			'rules'  => 'uploaded[dokumentasi]|is_image[dokumentasi]|max_size[dokumentasi,5048]',
 			'errors' => [
 				'uploaded' => '{field} tidak boleh kosong.',
 				'is_image'  => 'File yang diupload bukan gambar.',
-				'max_size' => '{field} maksimal 2048 Kb.',
-				'ext_in' => 'Format file tidak didukung',
+				'max_size' => '{field} maksimal 5048 Kb.',
 			]
 		],
 	];
@@ -161,21 +159,19 @@ class Validation
 
 	public $validasi_gambar = [
 		'gambar' => [
-			'rules'  => 'is_image[gambar]|max_size[gambar,2048]|ext_in[gambar,png,jpg,gif,jpeg]',
+			'rules'  => 'is_image[gambar]|max_size[gambar,2048]',
 			'errors' => [
 				'is_image'  => 'File yang diupload bukan gambar.',
 				'max_size'  => '{field} maksimal 2048 Kb.',
-				'ext_in'		=> 'Format file tidak didukung',
 			]
 		]
 	];
 	public $validasi_dokumentasi = [
 		'dokumentasi' => [
-			'rules'  => 'is_image[dokumentasi]|max_size[dokumentasi,2048]|ext_in[dokumentasi,png,jpg,gif,jpeg]',
+			'rules'  => 'is_image[dokumentasi]|max_size[dokumentasi,4048]',
 			'errors' => [
 				'is_image'  => 'File yang diupload bukan gambar.',
-				'max_size'  => '{field} maksimal 2048 Kb.',
-				'ext_in'		=> 'Format file tidak didukung',
+				'max_size'  => '{field} maksimal 4048 Kb.',
 			]
 		]
 	];

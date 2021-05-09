@@ -27,6 +27,8 @@
          </div>
          <!-- ==== end card === -->
       <?php endforeach; ?>
+      <!-- ==== pagination ==== -->
+      <?= $pager->links('daftar_penelitian', 'penelitian_pager') ?>
    </div>
 </div>
 

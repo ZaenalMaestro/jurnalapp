@@ -50,14 +50,14 @@ class Data extends BaseController
 		// generate uniq id penelitian
 		$id_penelitian = "penelitian_" . random_string('numeric',8);
 
-		// validasi input penelitian
+		// // validasi input penelitian
 		if(!$this->validation->run($data_penelitian, 'admin')){
 			return redirect()->back()->withInput();
 		}
 
-		$this->penelitian->insertData($data_penelitian, $files, $id_penelitian);
 		try {
 			// insert data kedalam table penelitian
+			$this->penelitian->insertData($data_penelitian, $files, $id_penelitian);
 
 			// insert data ketable gambar dengan tipe "gambar" berdasarkan id_penelitian
 			$this->gambar->insertGambar($files, $id_penelitian);
@@ -79,7 +79,7 @@ class Data extends BaseController
 	{
 		$data = [
 			'title' 			=> 'Ubah Data Penelitian',
-			'role' 			=> 'Admin',
+			'role' 			=> 'User',
 			'active_link' 	=> 'lihat_data',
 			'validation'	=> $this->validation,
 			'penelitian'	=> $this->penelitian->getSingle($id_penelitian),
